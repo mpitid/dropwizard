@@ -8,11 +8,12 @@
         <version>0.6.2</version>
     </parent>
 
-    <artifactId>dropwizard-scala_2.9.1</artifactId>
+    <artifactId>dropwizard-scala_2.10</artifactId>
     <name>Dropwizard for Scala ${scala.version}</name>
 
     <properties>
-        <scala.version>2.9.1</scala.version>
+        <scala.major.version>2.10</scala.major.version>
+        <scala.version>${scala.major.version}.4</scala.version>
     </properties>
 
     <dependencies>
@@ -28,25 +29,43 @@
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
-            <artifactId>jackson-module-scala</artifactId>
-            <version>2.1.2</version>
+            <artifactId>jackson-module-scala_${scala.major.version}</artifactId>
+            <version>2.1.5</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.scala-lang</groupId>
+                    <artifactId>scala-library</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.yammer.metrics</groupId>
-            <artifactId>metrics-scala_${scala.version}</artifactId>
+            <artifactId>metrics-scala_${scala.major.version}</artifactId>
             <version>${metrics.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.scala-lang</groupId>
+                    <artifactId>scala-library</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.10</version>
+            <version>4.11</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.simple</groupId>
-            <artifactId>simplespec_${scala.version}</artifactId>
-            <version>0.6.0</version>
+            <artifactId>simplespec_${scala.major.version}.2</artifactId>
+            <version>0.8.4</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.scala-lang</groupId>
+                    <artifactId>scala-library</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
